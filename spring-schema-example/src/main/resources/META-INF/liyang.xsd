@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/liyang"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:tns="http://www.example.org/liyang" elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+	<xsd:import namespace="http://www.springframework.org/schema/beans" />
+
+
+	<xsd:complexType name="identifiedType" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>
+<![CDATA[
+The unique identifier for a bean. The scope of the identifier is the enclosing bean factory.
+]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="id" type="xsd:string">
+			<xsd:annotation>
+				<xsd:documentation>
+<![CDATA[
+The unique identifier for a bean. A bean id may not be used more than once within the same <beans> element.
+]]>
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	
+	
+	<xsd:complexType name="serviceType">
+		<xsd:complexContent>
+			<xsd:extension base="tns:identifiedType">
+				<xsd:attribute name="name" type="xsd:string">
+				  <xsd:annotation> 
+			<xsd:documentation><![CDATA[ The service url parameter ]]></xsd:documentation> 
+		</xsd:annotation>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:complexContent>
+
+
+	</xsd:complexType>
+
+	<xsd:element name="service" type="tns:serviceType">
+	  <xsd:annotation> 
+			<xsd:documentation><![CDATA[ The service url parameter ]]></xsd:documentation> 
+		</xsd:annotation>
+	</xsd:element>
+
+
+</schema>
